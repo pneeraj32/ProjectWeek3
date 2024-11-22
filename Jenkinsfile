@@ -60,12 +60,12 @@ pipeline {
                     if(env.GIT_BRANCH == 'origin/main') {
                       sh '''
                       kubectl apply -f ./kubernetes -n prod
-                      kubectl set image deployment/node-deployment node-container=neeraj970/project3:v${BUILD_NUMBER} -n prod
+                      kubectl set image deployment/node-deployment node-container=neeraj870/project3:v${BUILD_NUMBER} -n prod
                       '''
                     } else if(env.GIT_BRANCH == 'origin/dev') {
                       sh '''
                       kubectl apply -f ./kubernetes -n dev
-                      kubectl set image deployment/node-deployment node-container=neeraj970/project3_dev:v${BUILD_NUMBER} -n dev
+                      kubectl set image deployment/node-deployment node-container=neeraj870/project3_dev:v${BUILD_NUMBER} -n dev
                       '''
                     } else {
                       sh'echo"Unknown branch"'
