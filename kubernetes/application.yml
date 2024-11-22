@@ -21,6 +21,10 @@ metadata:
   labels:
     app: nginx
 spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 20%
+      maxUnavailable: 20%
   replicas: 20
   selector:
     matchLabels:
