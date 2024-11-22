@@ -73,5 +73,18 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps{
+                script{
+                  if(env.GIT_BRANCH == 'origin/main') {
+                    sh'echo"This is main branch dont run tests"'                  
+                  } else if(env.GIT_BRANCH == 'origin/dev') {
+                    sh ''' 
+                    python lbg.test.py
+                    '''
+                  }
+                }
+            }
+        }
     }
 }
