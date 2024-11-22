@@ -18,7 +18,7 @@ spec:
         - name: node-container
           image: neeraj870/project3_dev:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 5500
 ---
 apiVersion: v1
 kind: Service
@@ -30,5 +30,5 @@ spec:
     app: node
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 5500
+      targetPort: 5500

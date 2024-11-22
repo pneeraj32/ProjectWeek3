@@ -54,6 +54,27 @@ pipeline {
                 }
             }
         }
+        stage('Unit Tests') {
+            steps {
+              script{
+                if(env.GIT_BRANCH == 'origin/main') {
+                  sh'"This is prod env dont run tests"'
+                } else if(env.GIT_BRANCH == 'origin/dev') {
+                  sh '''
+                  docker run -d -p 5500:5500 
+                  run tests
+                  if (test pass)
+                  echo test pass
+                  delete container
+                  end
+                  else
+                  echo test fail
+                  end
+                  '''
+                }
+              }
+            }
+        }
         stage('Deploy') {
             steps {
                 script{
